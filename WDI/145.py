@@ -2,8 +2,9 @@ def Result(n) -> None:
     
 
 
-def main():
+def main() -> None:
     n = int(input())
     Result(n)
+
 
 main()

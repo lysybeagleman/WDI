@@ -6,9 +6,10 @@ def Newton(n, k) -> int:
     return Newton(n - 1, k - 1) + Newton(n - 1, k)
 
 
-def main():
+def main() -> None:
     n = int(input())
     k = int(input())
     print(Newton(n, k))
+
 
 main()
