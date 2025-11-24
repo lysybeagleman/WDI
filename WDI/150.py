@@ -12,7 +12,7 @@ def Solve(T, min_sum, min_i_sum, i) -> int:
     return res_2
 
 
-def main():
+def main() -> None:
     N = int(input())
     T = [randint(1, 10) for i in range(N)]
     for i in range(N):

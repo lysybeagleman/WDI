@@ -13,7 +13,7 @@ def Solve(T, N, target, i, current_product, arr) -> int:
     return count_with + count_without
 
 
-def main():
+def main() -> None:
     N = int(input())
     target = int(input())
     T = [randint(1, 100) for i in range(N)]

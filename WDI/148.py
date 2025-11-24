@@ -1,13 +1,31 @@
-def Jump() -> None:
+def Jump(T, N, x, y, move, dx, dy) -> bool:
+    T[x][y] = move
+    if move == N * N:
+        return True
+    for i in range(8):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if 0 <= nx < N and 0 <= ny < N and T[x][y] == 0:
+            if Jump(nx, ny, move + 1):
+                return True
+    T[x][y] = 0
+    return False
+
 
 def main() -> None:
-    k = int(input())
-    t = [[randint(1, 10) for i in range(8)] for j in range(8)]
-    for i in range(8):
-        for j in range(8):
-            print(f"{t[i][j]} ", end="")
+    N = int(input())
+    T = [[0 for i in range(N)] for j in range(N)]
+    dx = [2, 1, -1, -2, -2, -1, 1, 2]
+    dy = [1, 2, 2, 1, -1, -2, -2, -1]
+    for i in range(N):
+        for j in range(N):
+            print(f"{T[i][j]} ", end="")
         print()
-    print(Cost(t, k, 0))
+    Jump(T, N, 0, 0, 1, dx, dy)
+    for i in range(N):
+        for j in range(N):
+            print(f"{T[i][j]} ", end="")
+        print()
 
 
 main()

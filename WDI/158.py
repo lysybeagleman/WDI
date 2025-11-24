@@ -11,7 +11,7 @@ def Solve(n, max_n, arr, k) -> None:
             Solve(n - i, i, arr, i + 1)
 
 
-def main():
+def main() -> None:
     n = int(input())
     arr = [0 for i in range(n)]
     Solve(n, n, arr, 0)
