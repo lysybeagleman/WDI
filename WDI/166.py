@@ -18,18 +18,23 @@ def Solve(T, S, k, w) -> bool:
     for i in range(8):
         for j in range(8):
             if w[i] == 1 and k[i] == 1:
-                
+                w[i] = 0
+                k[j] = 0
+                if Solve(T, S - T[i][j], k, w):
+                    return True
+                w[i] = 1
+                k[j] = 1
 
 
 
 def main() -> None:
     S = int(input())
-    T = [[randint(1, 1000000) for i in range(8)] for j in range(8)]
+    T = [[randint(1, 100) for i in range(8)] for j in range(8)]
     for i in range(8):
         for j in range(8):
             print(f"{T[i][j]}", end="")
         print()
-    print("YES" if Solve(T, S) else "NO")
+    print("YES" if Solve(T, S, None, None) else "NO")
 
 
 main()
