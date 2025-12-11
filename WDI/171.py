@@ -5,7 +5,7 @@ def Field(x1, x2) -> int:
     return (x2 - x1) ** 2
 
 
-def overlap(A, B):
+def Overlap(A, B) -> bool:
     x1a, x2a, y1a, y2a = A
     x1b, x2b, y1b, y2b = B
     if x2a <= x1b or x2b <= x1a:
@@ -22,7 +22,7 @@ def Solve(T, field_sum, i, counter, used) -> bool:
         return True
     for j in range(len(T)):
         if used[j] == 1:
-            if overlap(T[j], T[i]):
+            if Overlap(T[j], T[i]):
                 return False
     new_used = [0 for _ in range(len(T))]
     for k in range(len(T)):
