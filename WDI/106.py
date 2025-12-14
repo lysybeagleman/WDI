@@ -1,22 +1,29 @@
 from random import randint
 
-def Square(T, N, k) -> None:
-    if T[0][0] * T[0][N - 1] * T[N - 1][0] * T[N - 1][N - 1] == k:
-        print(f"YES, {N // 2 + 1}, {N // 2 + 1}")
-    else:
-        for i in range (N, 1, -2):
-        
+def Solve(T, k) -> tuple[bool, tuple[int, int]]:
+    for i in range(len(T)):
+        for j in range(len(T)):
+            d = 1
+            while True:
+                if i - d < 0 or i + d >= len(T) or j - d < 0 or j + d >= len(T):
+                    break
+                prod = T[i - d][j - d] * T[i - d][j + d] * T[i + d][j - d] * T[i + d][j + d]
+                if prod == k:
+                    return True, (i, j)
+                d += 1
+    return False, None
 
 
 def main() -> None:
     N = int(input())
     k = int(input())
-    T = [[randint(1, 8) for i in range(N)] for j in range(N)]
+    T = [[randint(1, 1000000) for _ in range(N)] for _ in range(N)]
     for i in range(N):
         for j in range(N):
             print(f"{T[i][j]} ", end="")
         print()
-    Square(T, N, k)
+    found, center = Solve(T, k)
+    print(f"YES, {center}" if found else "NO")
 
 
 main()
