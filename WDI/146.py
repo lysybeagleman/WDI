@@ -1,35 +1,24 @@
 from random import randint
 
-def Prime(n) -> bool:
-    if n < 2:
-        return False
-    if n == 2 or n == 3:
-        return True
-    if n % 2 == 0 or n % 3 == 0:
-        return False
-    d = 5
-    while d * d <= n:
-        if n % d == 0 or n % (d + 2) == 0:
-            return False
-        d += 6
-    return True
-
-
 def Weight(n) -> int:
+    d = 2
     w = 0
-    if n % 2 == 0:
-        w += 1
-    d = 3
     while d * d <= n:
-        if n % d == 0 and Prime(d):
+        if n % d == 0:
             w += 1
-        d += 2
+            while n % d == 0:
+                n //= d
+        d += 1
+    if n > 1:
+        w += 1
     return w
 
 
 def Partition(i, S, N, T) -> bool:
+    if N < 3:
+        return False
     if i == N:
-        return S[0] == S[1] ==  S[2]
+        return S[0] == S[1] == S[2]
     w = Weight(T[i])
     for j in range(3):
         S[j] += w
@@ -40,9 +29,7 @@ def Partition(i, S, N, T) -> bool:
 
 
 def Solve(T) -> bool:
-    N = len(T)
-    S = [0, 0, 0]
-    return Partition(0, S, N, T)     
+    return Partition(0, [0, 0, 0], len(T), T)     
 
 
 def main() -> None:

@@ -2,7 +2,7 @@ def A(x) -> int:
     r = 0
     t = x
     while t > 0:
-        r = r*10 + (t % 10)
+        r = r * 10 + (t % 10)
         t //= 10
     return r + 1
 

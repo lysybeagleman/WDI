@@ -5,7 +5,7 @@ def Jump(T, N, x, y, move, dx, dy) -> bool:
     for i in range(8):
         nx = x + dx[i]
         ny = y + dy[i]
-        if 0 <= nx < N and 0 <= ny < N and T[x][y] == 0:
+        if 0 <= nx < N and 0 <= ny < N and T[nx][ny] == 0:
             if Jump(nx, ny, move + 1):
                 return True
     T[x][y] = 0

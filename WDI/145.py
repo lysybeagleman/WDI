@@ -36,7 +36,6 @@ def Solve(n) -> None:
         d = l * p + r
         if d > 9:
             Solve(d)
-        i += 1
 
 
 def main() -> None:

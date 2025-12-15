@@ -12,7 +12,8 @@ def SolveRec(T, N, i, target, a, d) -> bool:
     return False
 
 
-def Solve(T, N):
+def sequence(T):
+    N = len(T)
     s1 = 0
     for i in range(N):
         s1 += T[i]
@@ -26,10 +27,6 @@ def Solve(T, N):
                     print("\n", a, d)
                     return (a, d)
     return None
-
-
-def sequence(T):
-    return Solve(T, len(T))
 
 
 def main() -> None:
