@@ -1,10 +1,9 @@
 from random import randint
 
 def Solve(T, i, m) -> bool:
-    n = len(T)
     if m == 0:
         return True
-    if i == n:
+    if i == len(T):
         return False
     if T[i] <= m:
         if Solve(T, i + 1, m - T[i]):

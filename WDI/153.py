@@ -1,8 +1,7 @@
 from random import randint
 
 def Solve(T, i, diff, m) -> bool:
-    n = len(T)
-    if i == n:
+    if i == len(T):
         return diff == m
     if Solve(T, i + 1, diff + T[i], m):
         return True

@@ -17,13 +17,12 @@ def Prime(n) -> bool:
 
 def Decimal(T, i, j) -> int:
     d = 0
-    for i in range(i, j):
-        d = d * 2 + T[i]
+    for k in range(i, j):
+        d = d * 2 + T[k]
     return d
 
 
-def Solve(T, i) -> bool:
-    N = len(T)
+def Solve(T, i, N) -> bool:
     if i == N:
         return True
     min = 30
@@ -31,7 +30,7 @@ def Solve(T, i) -> bool:
         min = N - i
     for length in range(1, min + 1):
         if Prime(Decimal(T, i, i + length)):
-            if Solve(T, i + length):
+            if Solve(T, i + length, N):
                 return True
     return False
 
@@ -42,7 +41,7 @@ def main() -> None:
     for i in range(N):
         print(f"{T[i]} ", end="")
     print()
-    print("YES" if Solve(T, 0) else "NO")
+    print("YES" if Solve(T, 0, N) else "NO")
 
 
 main()

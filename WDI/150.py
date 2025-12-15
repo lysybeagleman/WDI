@@ -1,15 +1,17 @@
 from random import randint
 
-def Solve(T, min_sum, min_i_sum, i) -> int:
-    if min_sum == min_i_sum and min_i_sum > 0:
-        return min_sum
+def Solve(T, sum_val, sum_idx, i, count) -> int:
+    if sum_val == sum_idx and count > 0:
+        return (count, sum_val)
     if i == len(T):
-        return 0
-    res_1 = Solve(T, min_sum, min_i_sum, i + 1)
-    res_2 = Solve(T, min_sum + T[i], min_i_sum + i, i + 1)
-    if res_1 > 0:
-        return res_1
-    return res_2
+        return None
+    res1 = Solve(T, sum_val, sum_idx, i + 1, count)
+    res2 = Solve(T, sum_val + T[i], sum_idx + i, i + 1, count + 1)
+    if res1 is None:
+        return res2
+    if res2 is None:
+        return res1
+    return res1[1] if res1[0] < res2[0] else res2[1]
 
 
 def main() -> None:
@@ -18,7 +20,7 @@ def main() -> None:
     for i in range(N):
         print(f"{T[i]} ", end="")
     print()
-    print(Solve(T, 0, 0, 0))
+    print(Solve(T, 0, 0, 0, 0))
 
 
 main()

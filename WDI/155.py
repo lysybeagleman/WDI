@@ -7,8 +7,8 @@ def det(A) -> float:
     if n == 2:
         return A[0][0] * A[1][1] - A[0][1] * A[1][0]
     wynik = 0.0
-    for k in range(len(A)):
-        B = [[A[i][j] for j in range(len(A)) if j != k] for i in range(1, len(A))]
+    for k in range(n):
+        B = [[A[i][j] for j in range(n) if j != k] for i in range(1, n)]
         if (k % 2) == 0:
             wynik += A[0][k] * det(B)
         else:
