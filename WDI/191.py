@@ -4,7 +4,7 @@ class Node:
         self.next = next
 
 
-def merge_iter(p, q):
+def Merge_Iter(p, q) -> Node:
     if p is None:
         return q
     if q is None:
@@ -28,25 +28,23 @@ def merge_iter(p, q):
         tail.next = p
     else:
         tail.next = q
-
     return head
 
 
-def merge_rec(p, q):
+def Merge_Rec(p, q) -> Node:
     if p is None:
         return q
     if q is None:
         return p
-
     if p.val <= q.val:
-        p.next = merge_rec(p.next, q)
+        p.next = Merge_Rec(p.next, q)
         return p
     else:
-        q.next = merge_rec(p, q.next)
+        q.next = Merge_Rec(p, q.next)
         return q
     
 
-def print_list(p):
+def Print(p) -> None:
     while p is not None:
         print(p.val, end=" ")
         p = p.next
@@ -54,45 +52,32 @@ def print_list(p):
 
 
 def main() -> None:
-    # Lista 1: 1 -> 3 -> 5 -> 7
     a4 = Node(7)
     a3 = Node(5, a4)
     a2 = Node(3, a3)
     a1 = Node(1, a2)
-
-    # Lista 2: 2 -> 4 -> 6 -> 8
     b4 = Node(8)
     b3 = Node(6, b4)
     b2 = Node(4, b3)
     b1 = Node(2, b2)
-
-    print("Lista A:")
-    print_list(a1)
-
+    Print("Lista A:")
+    Print(a1)
     print("Lista B:")
-    print_list(b1)
-
+    Print(b1)
     print("Scalanie iteracyjne:")
-    merged_iter = merge_iter(a1, b1)
-    print_list(merged_iter)
-
-    # UWAGA:
-    # Po scaleniu iteracyjnym listy są już "zużyte",
-    # więc do rekurencji trzeba stworzyć je od nowa.
-
+    merged_iter = Merge_Iter(a1, b1)
+    Print(merged_iter)
     a4 = Node(7)
     a3 = Node(5, a4)
     a2 = Node(3, a3)
     a1 = Node(1, a2)
-
     b4 = Node(8)
     b3 = Node(6, b4)
     b2 = Node(4, b3)
     b1 = Node(2, b2)
-
     print("Scalanie rekurencyjne:")
-    merged_rec = merge_rec(a1, b1)
-    print_list(merged_rec)
+    merged_rec = Merge_Rec(a1, b1)
+    Print(merged_rec)
 
 
 main()

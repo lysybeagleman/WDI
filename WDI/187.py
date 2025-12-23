@@ -1,13 +1,13 @@
 class Node:
-    def __init__(self, value, next=None):
-        self.value = value
+    def __init__(self, val, next=None):
+        self.val = val
         self.next = next
 
 
-def print_list(head):
+def Print(head) -> None:
     p = head
     while p is not None:
-        print(p.value, end=" ")
+        print(p.val, end=" ")
         p = p.next
     print()
 
@@ -16,7 +16,7 @@ def main() -> None:
     n3 = Node(30)
     n2 = Node(20, n3)
     n1 = Node(10, n2)
-    print_list(n1)
+    Print(n1)
     
 
 main()
